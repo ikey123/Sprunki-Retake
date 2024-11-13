@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play Sprunki Retake, a free horror mod game set within Incredibox's chilling phases. Discover eerie Mod Games with unique Spunky Beats and Quirky Characters.">
+    <title>Sprunki Retake: Incredibox's Horror Mod | RetakeSprunki.org</title>
+    <meta name="keywords" content="Sprunki Retake, Incredibox mod ">
+    <style>
+        :root {
+            --primary: #2a2a2a;
+            --secondary: #4a4a4a;
+            --accent: #8a2be2;
+            --text: #ffffff;
+            --background: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%238a2be2" opacity="0.1"/></svg>');
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        nav {
+            background: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .game-container {
+            background: var(--primary);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .game-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        h1, h2, h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--primary);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #9932cc;
+        }
+
+        footer {
+            background: var(--primary);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .feature-points ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-points li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-points li:before {
+            content: "▶";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .faq-container details {
+            background: var(--primary);
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .faq-container summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .faq-container summary:hover {
+            color: #9932cc;
+        }
+
+        .faq-content {
+            margin-top: 1rem;
+            padding-left: 1rem;
+        }
+
+        .faq-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .faq-content li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .faq-content li:before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .phase-card {
+            background: var(--primary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .phase-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phase-card h3::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .fullscreen-btn {
+            display: block;
+            margin: 1rem auto;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: var(--text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .fullscreen-btn:hover {
+            background: #9932cc;
+        }
+
+        .game-description {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        .game-description h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sprunki Retake</h1>
+        <p>Experience the Dark Side of Rhythm Gaming</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#game">Play Now</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#howtoplay">How to Play</a></li>
+            <li><a href="#tips">Tips & Strategies</a></li>
+            <li><a href="#phases">Game Phases</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <section id="game">
+        <h2>Play Sprunki Retake For Free</h2>
+        <div class="game-container">
+            <iframe class="game-frame" src="https://wowtbc.net/sprunkin/retake/index.html" title="Sprunki Retake Game"></iframe>
+            <button class="fullscreen-btn">Fullscreen Mode</button>
+        </div>            
+                <p>Sprunki Retake is a rhythm and beat creation game that transforms the original Incredibox experience into a dark and horror-themed adventure. It retains the core music-mixing mechanics while introducing new, spine-chilling elements, including new characters, sounds, and visual effects.</p>
+
+
+    </section>
+
+    <section id="features">
+        <h2>About Sprunki Retake & Key Features</h2>
+        <div class="feature-points">
+            <ul>
+                <li>Next-generation rhythm gaming experience combining dark themes with innovative gameplay</li>
+                <li>Proprietary Sprunki Retake engine for precise beat-matching and atmospheric effects</li>
+                <li>Cross-platform compatibility for seamless gaming across devices</li>
+                <li>Regular updates with new content and features</li>
+            </ul>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3>Advanced Rhythm System</h3>
+                <p>Sprunki Retake's proprietary beat-matching engine offers precise timing mechanics and dynamic difficulty scaling. Master intricate patterns and create your own dark musical masterpieces using our innovative composition tools.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Atmospheric Design</h3>
+                <p>Immerse yourself in Sprunki Retake's haunting visual design, where every element contributes to the dark atmosphere. Experience responsive animations and effects that react to your rhythm creations.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Progressive Gameplay</h3>
+                <p>Sprunki Retake features an adaptive difficulty system that evolves with your skills. Unlock new sound elements, visual themes, and composition tools as you master each level of the Sprunki Retake experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="howtoplay">
+        <h2>How to Play Sprunki Retake</h2>
+        <div class="phases-grid">
+            <div class="phase-card">
+                <h3>Getting Started</h3>
+                <p>Access Sprunki Retake directly through your browser. No downloads required - jump straight into the action with our intuitive interface. Create an account to save your progress and compositions.</p>
+            </div>
+            
+            <div class="phase-card">
+                <h3>Basic Controls</h3>
+                <p>Use drag-and-drop mechanics to place characters on the rhythm grid. Time your placements with the beat markers for perfect synchronization. Combine different character types to create unique sound patterns.</p>
+            </div>
+            
+            <div class="phase-card">
+                <h3>Advanced Features</h3>
+                <p>Unlock special effects and modifiers as you progress. Use the phase mixing system to blend different sound elements. Create custom sequences and save them for future use.</p>
+            </div>
+            
+            <div class="phase-card">
+                <h3>Sharing & Community</h3>
+                <p>Share your creations with the global Sprunki community. Participate in weekly challenges and events. Collaborate with other players to create unique compositions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tips">
+        <h2>Tips & Strategies for Success</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Beginner Tips</h3>
+                <p>Start with simple patterns and gradually increase complexity. Focus on mastering basic timing before attempting advanced compositions. Use the practice mode to experiment with different sound combinations without pressure.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Advanced Techniques</h3>
+                <p>Experiment with layering multiple sound elements for rich compositions. Master the art of cross-phase mixing to create unique atmospheric effects. Learn to use silence strategically for dramatic impact.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Performance Optimization</h3>
+                <p>Create custom hotkeys for frequently used elements. Study successful compositions from other players. Practice transitioning between different rhythmic patterns smoothly.</p>
+            </div>
+        </div>
+
+        <div class="feature-points">
+            <ul>
+                <li>Always start with a strong foundational beat</li>
+                <li>Experiment with different character combinations</li>
+                <li>Use the tutorial mode to understand new mechanics</li>
+                <li>Join community events to learn from others</li>
+                <li>Record and analyze your performances</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="phases">
+        <h2>Game Phases and Progression</h2>
+        <p>Experience the evolution of sound and creativity through distinct game phases:</p>
+        
+        <div class="phases-grid">
+            <div class="phase-card">
+                <h3>Phase 3: Classic Evolution</h3>
+                <p>Explore classic sound variations with unique Sprunki styles. Perfect for beginners to understand core mechanics while creating distinctive beats.</p>
+            </div>
+            
+            <div class="phase-card">
+                <h3>Phase 4: Thematic Depth</h3>
+                <p>Unlock deeper sound layers and thematic effects. Create more complex compositions with enhanced atmospheric elements.</p>
+            </div>
+            
+            <div class="phase-card">
+                <h3>Phase 5: Dark Transformation</h3>
+                <p>Enter the darker realm with intense beats and "infected" Sprunki characters. Experience a haunting shift in both visuals and audio.</p>
+            </div>
+            
+            <div class="phase-card">
+                <h3>Phase 6: Future Evolution</h3>
+                <p>Master advanced creation tools with futuristic sounds and upgraded effects. The ultimate playground for experienced composers.</p>
+            </div>
+        </div>
+        
+        <div class="feature-points">
+            <ul>
+                <li>Each phase unlocks new sound elements and visual themes</li>
+                <li>Progressive difficulty ensures smooth learning curve</li>
+                <li>Unique characters and effects in every phase</li>
+                <li>Mix elements from different phases for ultimate creativity</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <details>
+                <summary>What is Sprunki Retake?</summary>
+                <div class="faq-content">
+                    <ul>
+                        <li>Fan-made mod offering multiple unique versions</li>
+                        <li>General Version: Retains core music-mixing mechanics with new features</li>
+                        <li>Horror Version: Dark transformation with supernatural elements</li>
+                        <li>Features exploration, challenges, and character customization</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details>
+                <summary>How to Unlock All Phases?</summary>
+                <div class="faq-content">
+                    <ul>
+                        <li>Play directly through browser for natural progression</li>
+                        <li>Complete challenges in each phase to unlock new content</li>
+                        <li>Experiment with different character combinations</li>
+                        <li>Progress through phases 3-6 sequentially</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>What Makes Sprunki Retake Unique?</summary>
+                <div class="faq-content">
+                    <ul>
+                        <li>Enhanced graphics and smooth animations</li>
+                        <li>Dark-themed characters with unique abilities</li>
+                        <li>Integrated horror elements and atmospheric effects</li>
+                        <li>Special sound combinations unlock hidden content</li>
+                        <li>Multiplayer capabilities for collaborative play</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>How to Discover Hidden Content?</summary>
+                <div class="faq-content">
+                    <ul>
+                        <li>Experiment with different sound and character combinations</li>
+                        <li>Unlock special sequences through gameplay</li>
+                        <li>Complete challenges to reveal secret content</li>
+                        <li>Participate in community discussions for tips</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Available Platforms & Requirements</summary>
+                <div class="faq-content">
+                    <ul>
+                        <li>Playable directly in modern web browsers</li>
+                        <li>Compatible with Chrome, Firefox, and Safari</li>
+                        <li>No download required - instant browser play</li>
+                        <li>Stable internet connection recommended</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Community & Sharing</summary>
+                <div class="faq-content">
+                    <ul>
+                        <li>Save and share your musical compositions</li>
+                        <li>Get feedback from the community</li>
+                        <li>Access tutorials and resources</li>
+                        <li>Participate in community discussions</li>
+                        <li>Join Discord for real-time interaction</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="community">
+        <h2>Join the Sprunki Retake Community</h2>
+        <div class="feature-points">
+            <ul>
+                <li>The Sprunki Retake community continues to grow every day. As more players discover Sprunki Retake, our community becomes more diverse and creative. Whether you're creating new rhythms in Sprunki Retake or sharing tips with fellow players, there's always something exciting happening in the world of Sprunki Retake.</li>
+                
+                <li>Regular events, competitions, and collaborative projects provide endless opportunities to engage with other players and showcase your talent. Whether you're interested in creating spine-chilling soundscapes or exploring the darker side of rhythm gaming, you'll find like-minded individuals in our community ready to support and inspire your creative journey.</li>
+                
+                <li>Join our Discord server to participate in discussions, share feedback, and stay updated on the latest game developments. Our community moderators and experienced players are always ready to help newcomers and contribute to the growing collection of resources available to all Sprunki Retake players.</li>
+            </ul>
+        </div>
+        <a href="https://discord.gg/sprunkiretake" class="cta-button">Join Our Discord</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Sprunki Retake. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelector('.fullscreen-btn').addEventListener('click', () => {
+            const iframe = document.querySelector('.game-frame');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
