@@ -1,7 +1,8 @@
 Sprunki Retake : Incredibox's Horror Mod | RetakeSprunki.org
 Play free Sprunki Retake Mod game online. Explore Incredibox Sprunki horror mod games. Incredibox retake & sprunki phase mod games, enjoy sprunki horrors mod.
 http://retakesprunki.org/    
-
+Keywords
+ Sprunki Retake, music game, horror game, Incredibox mod, music creation, horror theme ,Spunky Game, Sprunki Mod, Music Creation Game, Spunky Beats, Quirky Characters, Beat Making, Music Composition, Interactive Music, Rhythm Game, Audio Mixing, Free Online Game
 ## Sprunki Retake Game Introduction
 
 ### Game Overview
@@ -85,3 +86,4 @@ http://retakesprunki.org/
 
 ### How can you share and get feedback on your creations within the Sprunki Retake Mod community?
 - Save, share your work, and get feedback from the community. Join community forums and Discord servers to interact with other players and share your creations.
+
